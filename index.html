@@ -142,7 +142,7 @@ button,.card,a,summary,select,.opt{touch-action:manipulation;-webkit-tap-highlig
 #tb{display:none}
 #vpg{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--a),var(--d));transition:width .25s}
 .swh{display:none;flex-basis:100%;font-size:.78rem;color:var(--mu)}
-.rv{opacity:0}.rv.in{animation:rvIn .5s ease both}@keyframes rvIn{from{opacity:0;transform:translateY(16px)}}
+.rv{opacity:0}.rv.in{opacity:1;animation:rvIn .5s ease both}@keyframes rvIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1}.rv.in{animation:none}#vpg{transition:none}}
 @media(max-width:700px){
 body{font-size:16px}
