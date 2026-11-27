@@ -7,6 +7,12 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="vivek.p, Department of Computer Engineering">
 <meta name="theme-color" content="#0c1020">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DV Notes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RKM Polytechnic College · Computer Engineering">
 <meta property="og:title" content="Data Visualization Course Notes, Slides and Lab Programs">
@@ -127,6 +133,7 @@ details summary::before{content:"";flex:none;width:14px;height:14px;border-radiu
 .dkc.stat{align-items:center;text-align:center;justify-content:center}
 .dkc.stat .n{width:auto;height:auto;background:none;font-size:2.6rem;line-height:1}
 .dkc.stat b{color:var(--mu);font-weight:600;font-size:.9rem}
+[hidden]{display:none!important}#inst{border:0;margin-left:8px}
 button,.card,a,summary,select,.opt{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .card:active,.links a:active,.opt:active,.cta:active,.ico:active{transform:scale(.97)}
 #sp{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:3px;z-index:11;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--a),var(--b),var(--c))}
@@ -169,7 +176,8 @@ h2{margin-top:56px}
 <p class="lead">Turn raw datasets into charts that explain something. Five units, ten Python and R exercises with starter code, and the full assessment plan for the Diploma in Computer Engineering.</p>
 <div class="chips"><span class="chip">1052236243</span><span class="chip">DOTE 2023</span><span class="chip">L-T-P-C 1-0-4-3</span><span class="chip">75 hours</span></div>
 <p class="by"><b>vivek.p - faculty, department of computer engineering</b><br>Ramakrishna Mission Polytechnic College, Mylapore</p>
-<a class="cta" href="#units">Start with Unit I</a></div>
+<a class="cta" href="#units">Start with Unit I</a> <button class="cta" id="inst" type="button" hidden>Install app</button>
+<p class="sub" id="ioshint" hidden style="margin:12px 0 0">On iPhone: tap the Share button, then Add to Home Screen to install this as an app.</p></div>
 <div id="stage"><span>Click the chart to load new data</span></div>
 </section>
 <div class="strip" aria-hidden="true"><div id="mq"></div></div>
@@ -575,6 +583,15 @@ let x0=null,y0=0,t0=null;
 vw.addEventListener('touchstart',e=>{const t=e.touches[0];x0=t.clientX;y0=t.clientY;t0=e.target},{passive:true});
 vw.addEventListener('touchend',e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0,bad=t0&&t0.closest&&t0.closest('pre,.tw,select,.vbar');x0=null;if(bad||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.8)return;$(dx<0?'#vn':'#vp').click();if(navigator.vibrate)navigator.vibrate(8)},{passive:true})}
 })();
+</script>
+<script>
+(function(){if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude/.test(location.hostname))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+let dp=null;const ib=document.getElementById('inst'),ih=document.getElementById('ioshint');
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;ib.hidden=false});
+ib.onclick=async()=>{if(!dp)return;dp.prompt();try{await dp.userChoice}catch(x){}dp=null;ib.hidden=true};
+addEventListener('appinstalled',()=>{ib.hidden=true;ih.hidden=true});
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent),sa=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(ios&&!sa)ih.hidden=false})();
 </script>
 </body>
 </html>

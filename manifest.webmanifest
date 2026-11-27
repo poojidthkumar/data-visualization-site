@@ -1,0 +1,31 @@
+{
+ "name": "Data Visualization · RKM Polytechnic College",
+ "short_name": "DV Notes",
+ "description": "Data Visualization (DOTE 2023) notes, slide decks and lab programs for Diploma in Computer Engineering.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait-primary",
+ "background_color": "#0c1020",
+ "theme_color": "#0c1020",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
